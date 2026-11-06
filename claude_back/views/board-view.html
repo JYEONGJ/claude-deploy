@@ -1,0 +1,28 @@
+<section class="bd-wrap bd-narrow">
+    <div class="bd-titlebar">
+        <a class="bd-kicker" href="/board">게시판</a>
+        <span class="bd-crumb">홈 › 게시판 › 상세</span>
+    </div>
+    <article class="bd-detail">
+        <header class="bd-detail-head">
+            <h1>{{title}}</h1>
+            <p class="bd-meta"><span>{{author}}</span> · <time datetime="{{iso}}">{{date}}</time>{{{badge}}}</p>
+        </header>
+        <div class="bd-detail-body">{{content}}</div>
+    </article>
+    <div class="bd-actions">
+        <a class="bd-btn bd-btn-line" href="/board">목록</a>
+        {{{ownerActions}}}
+    </div>
+</section>
+
+<div class="bd-dialog-backdrop" id="deleteDialog" hidden>
+    <div class="bd-dialog" role="dialog" aria-modal="true" aria-labelledby="deleteTitle">
+        <p class="bd-dialog-title" id="deleteTitle">게시글을 삭제할까요?</p>
+        <p class="bd-dialog-body">삭제한 게시글은 복구할 수 없어요.</p>
+        <div class="bd-dialog-actions">
+            <button type="button" class="bd-btn bd-btn-line" id="deleteCancel">취소</button>
+            <button type="button" class="bd-btn bd-btn-primary" id="deleteConfirm">삭제</button>
+        </div>
+    </div>
+</div>

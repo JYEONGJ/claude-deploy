@@ -238,3 +238,6 @@ $RECYCLE.BIN/
 settings.local.json
 ### Custom: nested git repository ###
 git/
+
+### Custom: DBeaver workspace (DB credentials)
+dbms/

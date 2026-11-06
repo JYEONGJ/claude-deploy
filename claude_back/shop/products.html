@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>운동화 전체 상품 | StepShop</title>
+  <meta name="description" content="StepShop 운동화 카테고리입니다. 색상, 사이즈, 가격 필터와 신상품순, 낮은가격순 정렬로 내 발에 맞는 러닝화와 스니커즈를 빠르게 찾아보세요.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="운동화 전체 상품 | StepShop">
+  <meta property="og:description" content="색상, 사이즈, 가격 필터로 내 발에 맞는 러닝화와 스니커즈를 빠르게 찾아보세요.">
+  <meta property="og:image" content="https://example.com/images/og-sneakers.jpg">
+  <link rel="canonical" href="https://example.com/categories/sneakers">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"홈","item":"https://example.com/"},
+    {"@type":"ListItem","position":2,"name":"운동화","item":"https://example.com/categories/sneakers"}]}
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="index.html">StepShop</a>
+      <nav class="gnb" aria-label="주요 카테고리">
+        <a href="products.html" aria-current="page">운동화</a>
+        <a href="products.html">구두</a>
+        <a href="products.html">샌들</a>
+        <a href="products.html">부츠</a>
+      </nav>
+      <nav class="util" aria-label="회원 메뉴">
+        <a href="#">로그인</a><a href="#">장바구니</a><a href="#">마이페이지</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <nav class="breadcrumb" aria-label="현재 위치">
+      <ol><li><a href="index.html">홈</a></li><li aria-current="page">운동화</li></ol>
+    </nav>
+
+    <div class="list-layout">
+      <!-- 필터는 GET 쿼리스트링 폼: JS 없이도 서버 렌더링으로 동작 -->
+      <form class="filters" method="get" action="products.html" aria-label="상품 필터">
+        <fieldset>
+          <legend>사이즈(mm)</legend>
+          <div class="sizes">
+            <label><input type="checkbox" name="size" value="230"> 230</label>
+            <label><input type="checkbox" name="size" value="240"> 240</label>
+            <label><input type="checkbox" name="size" value="250"> 250</label>
+            <label><input type="checkbox" name="size" value="260"> 260</label>
+            <label><input type="checkbox" name="size" value="270"> 270</label>
+            <label><input type="checkbox" name="size" value="280"> 280</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>색상</legend>
+          <label><input type="checkbox" name="color" value="white"> 화이트</label>
+          <label><input type="checkbox" name="color" value="black"> 블랙</label>
+          <label><input type="checkbox" name="color" value="beige"> 베이지</label>
+        </fieldset>
+        <fieldset>
+          <legend>가격</legend>
+          <label><input type="radio" name="price" value="0-50000"> 5만원 이하</label>
+          <label><input type="radio" name="price" value="50000-100000"> 5~10만원</label>
+          <label><input type="radio" name="price" value="100000-"> 10만원 이상</label>
+        </fieldset>
+        <button class="btn" type="submit">필터 적용</button>
+      </form>
+
+      <section aria-labelledby="list-title">
+        <header class="toolbar">
+          <div>
+            <h1 id="list-title">운동화</h1>
+            <p style="margin:0;color:var(--muted)">총 6개 상품</p>
+          </div>
+          <form method="get" action="products.html">
+            <label for="sort">정렬</label>
+            <select id="sort" name="sort" onchange="this.form.submit()">
+              <option value="new">신상품순</option>
+              <option value="price_asc">낮은가격순</option>
+              <option value="price_desc">높은가격순</option>
+              <option value="popular">인기순</option>
+            </select>
+            <noscript><button type="submit">적용</button></noscript>
+          </form>
+        </header>
+
+        <ul class="grid">
+          <li class="card"><a href="product-detail.html">
+            <img src="https://picsum.photos/seed/l1/400/400" alt="에어러너 화이트 운동화 측면" width="400" height="400" loading="lazy">
+            <p class="brand">StepLab</p><p class="name">에어러너 화이트</p><p class="price">89,000원</p></a></li>
+          <li class="card"><a href="product-detail.html">
+            <img src="https://picsum.photos/seed/l2/400/400" alt="블랙 러닝화 쿠션 솔 디테일" width="400" height="400" loading="lazy">
+            <p class="brand">StepLab</p><p class="name">쿠션 러너 블랙</p><p class="price">99,000원</p></a></li>
+          <li class="card"><a href="product-detail.html">
+            <img src="https://picsum.photos/seed/l3/400/400" alt="베이지 캔버스 로우탑 스니커즈" width="400" height="400" loading="lazy">
+            <p class="brand">Daily</p><p class="name">캔버스 로우탑 <span class="badge">품절</span></p><p class="price">45,000원</p></a></li>
+          <li class="card"><a href="product-detail.html">
+            <img src="https://picsum.photos/seed/l4/400/400" alt="화이트 레더 미니멀 스니커즈" width="400" height="400" loading="lazy">
+            <p class="brand">Daily</p><p class="name">미니멀 레더 스니커즈</p><p class="price">119,000원</p></a></li>
+          <li class="card"><a href="product-detail.html">
+            <img src="https://picsum.photos/seed/l5/400/400" alt="그레이 트레일 러닝화" width="400" height="400" loading="lazy">
+            <p class="brand">TrailX</p><p class="name">트레일 그립 그레이</p><p class="price">139,000원</p></a></li>
+          <li class="card"><a href="product-detail.html">
+            <img src="https://picsum.photos/seed/l6/400/400" alt="블랙 하이탑 스니커즈" width="400" height="400" loading="lazy">
+            <p class="brand">TrailX</p><p class="name">하이탑 블랙</p><p class="price">109,000원</p></a></li>
+        </ul>
+
+        <nav class="pagination" aria-label="페이지 이동">
+          <ul>
+            <li><a href="products.html?page=1" aria-current="page">1</a></li>
+            <li><a href="products.html?page=2">2</a></li>
+            <li><a href="products.html?page=3">3</a></li>
+          </ul>
+        </nav>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <ul><li><a href="#">이용약관</a></li><li><a href="#">개인정보처리방침</a></li><li><a href="#">고객센터</a></li></ul>
+      <p>StepShop | 대표 홍길동 | 사업자등록번호 000-00-00000</p>
+    </div>
+  </footer>
+</body>
+</html>

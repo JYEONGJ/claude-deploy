@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>인형 상세 | 인형가게</title>
+  <meta name="description" content="인형가게의 인형 상품 상세 정보 페이지입니다. 상품명, 가격, 현재 재고를 확인하고 원하는 수량만큼 로그인 없이 바로 구매할 수 있습니다. 재고가 없는 상품은 품절로 표시되어 구매 버튼이 비활성화됩니다. 상품 구매 전 가격과 재고를 꼭 확인하세요.">
+
+  <meta property="og:title" content="인형 상세 | 인형가게">
+  <meta property="og:description" content="인형가게의 인형 상품 상세 정보 페이지입니다. 상품명, 가격, 현재 재고를 확인하고 원하는 수량만큼 로그인 없이 바로 구매할 수 있습니다. 재고가 없는 상품은 품절로 표시되어 구매 버튼이 비활성화됩니다. 상품 구매 전 가격과 재고를 꼭 확인하세요.">
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://example.com/doll.html">
+
+  <link rel="canonical" href="https://example.com/doll.html">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/common.js" defer></script>
+  <script src="js/doll.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="index.html">인형가게</a>
+    <nav>
+      <a href="index.html">인형 목록</a>
+      <a href="doll-form.html">인형 등록</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <p id="error" class="alert" role="alert" hidden></p>
+
+    <article id="doll" class="doll-detail" hidden>
+      <h1 id="doll-name"></h1>
+      <p class="price" id="doll-price"></p>
+      <p id="doll-stock"></p>
+
+      <form id="purchase-form" class="purchase-form">
+        <label for="quantity">구매 수량</label>
+        <input id="quantity" type="number" min="1" step="1" value="1">
+        <p id="quantity-error" class="field-error" hidden></p>
+        <button type="submit" id="purchase-btn" class="btn btn-primary">구매하기</button>
+      </form>
+      <p id="purchase-result" class="notice" role="status" hidden></p>
+
+      <p class="actions">
+        <a id="edit-link" class="btn" href="index.html">인형 정보 수정</a>
+      </p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 인형가게 테스트 사이트</p>
+  </footer>
+</body>
+</html>

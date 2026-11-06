@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.3.0",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@prisma/client": "6.4.1",
+    "prisma": "6.4.1"
+  },
+  "scripts": {
+    "minit": "prisma migrate dev --name init",
+    "mreset": "prisma migrate reset"
+  }
+}

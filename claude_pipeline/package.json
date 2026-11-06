@@ -1,0 +1,26 @@
+{
+  "name": "doll-shop",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@prisma/client": "6.4.1",
+    "cors": "^2.8.6",
+    "express": "^5.3.0",
+    "prisma": "6.4.1",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "generate": "prisma generate",
+    "minit": "prisma migrate dev --name init",
+    "mreset": "prisma migrate reset",
+    "check": "node --check src/server.js",
+    "seed": "prisma db seed"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  }
+}

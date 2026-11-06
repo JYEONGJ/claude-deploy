@@ -1,0 +1,75 @@
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  font-family: "Malgun Gothic", sans-serif;
+  color: #222;
+  background: #fafafa;
+  line-height: 1.5;
+}
+
+a { color: #1a5fb4; }
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 12px 16px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+.logo { font-weight: bold; font-size: 1.2em; color: #222; text-decoration: none; }
+.site-header nav a { margin-left: 12px; }
+
+.container { max-width: 720px; margin: 0 auto; padding: 16px; }
+.site-footer { text-align: center; color: #777; padding: 24px 16px; font-size: 0.9em; }
+
+.alert { padding: 10px 12px; border-radius: 4px; background: #fdecea; color: #b00020; border: 1px solid #f5c2c7; }
+.notice { padding: 10px 12px; border-radius: 4px; background: #e8f5e9; color: #1b5e20; border: 1px solid #c8e6c9; }
+.field-error { margin: 4px 0 0; color: #b00020; font-size: 0.9em; }
+
+.doll-list { list-style: none; padding: 0; display: grid; gap: 12px; }
+.doll-card { background: #fff; border: 1px solid #ddd; border-radius: 6px; }
+.doll-card a { display: block; padding: 14px 16px; color: #222; text-decoration: none; }
+.doll-card h2 { margin: 0 0 6px; font-size: 1.1em; }
+.doll-card p { margin: 0; }
+.empty { color: #777; padding: 16px; }
+
+.price { font-size: 1.3em; font-weight: bold; margin: 8px 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; }
+.badge.sold-out { background: #555; color: #fff; }
+
+.doll-detail { background: #fff; border: 1px solid #ddd; border-radius: 6px; padding: 16px; }
+.doll-detail h1 { margin-top: 0; font-size: 1.5em; }
+
+.purchase-form, .doll-form { margin-top: 16px; }
+.purchase-form label { display: block; margin-bottom: 4px; }
+.purchase-form input { width: 120px; }
+
+.field { margin-bottom: 14px; }
+.field label { display: block; margin-bottom: 4px; font-weight: bold; }
+.field input { width: 100%; max-width: 360px; padding: 8px; border: 1px solid #bbb; border-radius: 4px; font-size: 1em; }
+
+input[type="number"], input[type="text"] { padding: 6px 8px; border: 1px solid #bbb; border-radius: 4px; font-size: 1em; }
+input:disabled { background: #eee; }
+
+.btn {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid #888;
+  border-radius: 4px;
+  background: #fff;
+  color: #222;
+  text-decoration: none;
+  font-size: 1em;
+  cursor: pointer;
+}
+.btn-primary { background: #1a5fb4; border-color: #1a5fb4; color: #fff; margin-top: 8px; }
+.btn-danger { background: #c62828; border-color: #c62828; color: #fff; }
+.btn:disabled { background: #ccc; border-color: #ccc; color: #666; cursor: not-allowed; }
+
+.actions { margin-top: 16px; }
+.form-buttons { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }

@@ -1,0 +1,28 @@
+<section class="bd-wrap bd-narrow">
+    <div class="bd-titlebar">
+        <h1>{{heading}}</h1>
+        <span class="bd-crumb">홈 › 게시판 › {{heading}}</span>
+    </div>
+    <form class="bd-form" id="postForm" data-id="{{id}}" novalidate>
+        <div class="bd-form-box">
+            <label class="bd-field">
+                <span>제목</span>
+                <input id="f-title" maxlength="200" placeholder="제목을 입력해 주세요" value="{{title}}">
+            </label>
+            <label class="bd-field">
+                <span>내용</span>
+                <textarea id="f-content" rows="10" maxlength="5000" placeholder="내용을 자유롭게 남겨 주세요.">{{content}}</textarea>
+                <small id="contentLen">0 / 5000</small>
+            </label>
+            <label class="bd-check">
+                <input type="checkbox" id="f-public"{{{checked}}}>
+                <span>공개 (체크 해제 시 목록과 검색에 노출되지 않아요)</span>
+            </label>
+            <p class="bd-error" id="formError" role="alert" hidden></p>
+        </div>
+        <div class="bd-form-actions">
+            <a class="bd-btn bd-btn-line" href="{{cancelHref}}">취소</a>
+            <button type="submit" class="bd-btn bd-btn-primary">{{submitLabel}}</button>
+        </div>
+    </form>
+</section>

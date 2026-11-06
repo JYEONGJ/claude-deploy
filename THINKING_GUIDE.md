@@ -110,7 +110,7 @@ curl -X POST https://api.anthropic.com/v1/messages \
 ### HTML/웹 브라우저
 ```bash
 # 브라우저에서 열기
-open thinking_example.html
+open thinking-example.html
 ```
 
 ---

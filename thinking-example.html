@@ -4,206 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Claude API - Extended Thinking 예제</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            color: white;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card h2 {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: #333;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 10px;
-        }
-
-        .card p {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 15px;
-            flex-grow: 1;
-        }
-
-        .card input, .card select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 14px;
-            font-family: 'Monaco', 'Menlo', monospace;
-        }
-
-        .card button {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-
-        .card button:hover {
-            background: #764ba2;
-        }
-
-        .output-section {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-        }
-
-        .output-section h2 {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: #333;
-        }
-
-        .output-box {
-            background: #f5f5f5;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            padding: 15px;
-            max-height: 400px;
-            overflow-y: auto;
-            margin-bottom: 15px;
-            font-family: 'Monaco', 'Menlo', monospace;
-            font-size: 12px;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        .thinking-block {
-            background: #e8f4f8;
-            border-left: 4px solid #667eea;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 4px;
-        }
-
-        .thinking-block .label {
-            font-weight: bold;
-            color: #667eea;
-            font-size: 12px;
-        }
-
-        .thinking-block .content {
-            margin-top: 5px;
-            color: #333;
-            font-size: 13px;
-        }
-
-        .response-block {
-            background: #f0f8f0;
-            border-left: 4px solid #4caf50;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 4px;
-        }
-
-        .response-block .label {
-            font-weight: bold;
-            color: #4caf50;
-            font-size: 12px;
-        }
-
-        .response-block .content {
-            margin-top: 5px;
-            color: #333;
-            font-size: 13px;
-        }
-
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 10px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .error {
-            background: #ffebee;
-            border-left: 4px solid #f44336;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 4px;
-            color: #c62828;
-        }
-
-        .effort-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .effort-item {
-            padding: 8px;
-            background: #f5f5f5;
-            border-radius: 4px;
-            font-size: 12px;
-            text-align: center;
-        }
-
-        .effort-item.low { border-left: 3px solid #4caf50; }
-        .effort-item.medium { border-left: 3px solid #2196f3; }
-        .effort-item.high { border-left: 3px solid #ff9800; }
-        .effort-item.xhigh { border-left: 3px solid #f44336; }
-    </style>
+    <link rel="stylesheet" href="css/thinking-example.css">
 </head>
 <body>
     <div class="container">
@@ -215,7 +16,7 @@
                 <h2>1️⃣ 기본 Thinking</h2>
                 <p>Claude가 자동으로 thinking 깊이를 결정하도록 합니다.</p>
                 <input type="text" id="input1" placeholder="질문 입력..." value="1부터 100까지의 소수는?">
-                <button onclick="basicThinking()">실행</button>
+                <button type="button" data-action="basic">실행</button>
             </div>
 
             <!-- Effort 제어 -->
@@ -229,7 +30,7 @@
                     <option value="xhigh">XHigh (깊음, 고비용)</option>
                 </select>
                 <input type="text" id="input2" placeholder="질문 입력..." value="이진 탐색 알고리즘">
-                <button onclick="thinkingWithEffort()">실행</button>
+                <button type="button" data-action="effort">실행</button>
             </div>
 
             <!-- Display 옵션 -->
@@ -241,7 +42,7 @@
                     <option value="summarized" selected>Summarized (요약)</option>
                 </select>
                 <input type="text" id="input3" placeholder="질문 입력..." value="동적 프로그래밍이란?">
-                <button onclick="thinkingWithDisplay()">실행</button>
+                <button type="button" data-action="display">실행</button>
             </div>
 
             <!-- Tool Use -->
@@ -249,7 +50,7 @@
                 <h2>🔧 Tool과 함께</h2>
                 <p>thinking과 tool use를 함께 사용합니다.</p>
                 <input type="text" id="input4" placeholder="질문 입력..." value="345 × 67 + 89는?">
-                <button onclick="thinkingWithTools()">실행</button>
+                <button type="button" data-action="tools">실행</button>
             </div>
 
             <!-- API 설정 -->
@@ -257,7 +58,7 @@
                 <h2>⚙️ API 설정</h2>
                 <p>API 키를 설정하세요. (필수)</p>
                 <input type="password" id="apiKey" placeholder="ANTHROPIC_API_KEY" value="">
-                <small style="color: #999;">키는 브라우저 메모리에만 저장됩니다.</small>
+                <small class="hint">키는 브라우저 메모리에만 저장됩니다.</small>
             </div>
 
             <!-- 모델 선택 -->
@@ -305,225 +106,10 @@
                 <p>처리 중입니다...</p>
             </div>
 
-            <div id="output" class="output-box" style="display: none;"></div>
+            <div id="output" class="output-box hidden"></div>
         </div>
     </div>
 
-    <script>
-        const API_URL = "https://api.anthropic.com/v1/messages";
-
-        function showLoading(show = true) {
-            document.getElementById('loading').style.display = show ? 'block' : 'none';
-            const output = document.getElementById('output');
-            if (show) {
-                output.innerHTML = '';
-                output.style.display = 'none';
-            }
-        }
-
-        function showOutput(html) {
-            showLoading(false);
-            const output = document.getElementById('output');
-            output.innerHTML = html;
-            output.style.display = 'block';
-        }
-
-        function addError(message) {
-            const output = document.getElementById('output');
-            output.innerHTML += `<div class="error">❌ 에러: ${message}</div>`;
-        }
-
-        async function callAPI(payload) {
-            const apiKey = document.getElementById('apiKey').value;
-            if (!apiKey) {
-                addError('API 키를 입력해주세요.');
-                showLoading(false);
-                return null;
-            }
-
-            try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'x-api-key': apiKey,
-                        'anthropic-version': '2023-06-01',
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    const error = await response.json();
-                    throw new Error(error.error?.message || `API Error: ${response.status}`);
-                }
-
-                return await response.json();
-            } catch (error) {
-                addError(error.message);
-                showLoading(false);
-                return null;
-            }
-        }
-
-        function formatResponse(message) {
-            let html = '';
-            for (const block of message.content) {
-                if (block.type === 'thinking') {
-                    html += `
-                        <div class="thinking-block">
-                            <div class="label">🧠 Thinking:</div>
-                            <div class="content">${escapeHtml(block.thinking)}</div>
-                        </div>
-                    `;
-                } else if (block.type === 'text') {
-                    html += `
-                        <div class="response-block">
-                            <div class="label">💬 Response:</div>
-                            <div class="content">${escapeHtml(block.text)}</div>
-                        </div>
-                    `;
-                } else if (block.type === 'tool_use') {
-                    html += `
-                        <div class="response-block">
-                            <div class="label">🔧 Tool: ${block.name}</div>
-                            <div class="content"><pre>${escapeHtml(JSON.stringify(block.input, null, 2))}</pre></div>
-                        </div>
-                    `;
-                }
-            }
-            return html;
-        }
-
-        function escapeHtml(text) {
-            const map = {
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&#039;'
-            };
-            return text.replace(/[&<>"']/g, m => map[m]);
-        }
-
-        async function basicThinking() {
-            showLoading();
-            const input = document.getElementById('input1').value;
-            const model = document.getElementById('model').value;
-
-            const response = await callAPI({
-                model,
-                max_tokens: 16000,
-                thinking: { type: 'adaptive' },
-                messages: [{ role: 'user', content: input }]
-            });
-
-            if (response) {
-                showOutput(`
-                    <div class="thinking-block">
-                        <div class="label">📋 질문:</div>
-                        <div class="content">${escapeHtml(input)}</div>
-                    </div>
-                    ${formatResponse(response)}
-                `);
-            }
-        }
-
-        async function thinkingWithEffort() {
-            showLoading();
-            const input = document.getElementById('input2').value;
-            const effort = document.getElementById('effort').value;
-            const model = document.getElementById('model').value;
-
-            const response = await callAPI({
-                model,
-                max_tokens: 16000,
-                output_config: { effort },
-                thinking: { type: 'adaptive' },
-                messages: [{ role: 'user', content: input }]
-            });
-
-            if (response) {
-                showOutput(`
-                    <div class="thinking-block">
-                        <div class="label">📋 질문:</div>
-                        <div class="content">${escapeHtml(input)}</div>
-                    </div>
-                    <div class="thinking-block">
-                        <div class="label">⚙️ Effort:</div>
-                        <div class="content">${effort}</div>
-                    </div>
-                    ${formatResponse(response)}
-                `);
-            }
-        }
-
-        async function thinkingWithDisplay() {
-            showLoading();
-            const input = document.getElementById('input3').value;
-            const display = document.getElementById('display').value;
-            const model = document.getElementById('model').value;
-
-            const response = await callAPI({
-                model,
-                max_tokens: 16000,
-                thinking: { type: 'adaptive', display },
-                messages: [{ role: 'user', content: input }]
-            });
-
-            if (response) {
-                showOutput(`
-                    <div class="thinking-block">
-                        <div class="label">📋 질문:</div>
-                        <div class="content">${escapeHtml(input)}</div>
-                    </div>
-                    <div class="thinking-block">
-                        <div class="label">📊 Display:</div>
-                        <div class="content">${display}</div>
-                    </div>
-                    ${formatResponse(response)}
-                `);
-            }
-        }
-
-        async function thinkingWithTools() {
-            showLoading();
-            const input = document.getElementById('input4').value;
-            const model = document.getElementById('model').value;
-
-            const response = await callAPI({
-                model,
-                max_tokens: 16000,
-                thinking: { type: 'adaptive' },
-                tools: [{
-                    name: 'calculator',
-                    description: '간단한 계산을 수행합니다',
-                    input_schema: {
-                        type: 'object',
-                        properties: {
-                            operation: {
-                                type: 'string',
-                                enum: ['add', 'subtract', 'multiply', 'divide'],
-                                description: '수행할 연산'
-                            },
-                            a: { type: 'number', description: '첫 번째 숫자' },
-                            b: { type: 'number', description: '두 번째 숫자' }
-                        },
-                        required: ['operation', 'a', 'b']
-                    }
-                }],
-                messages: [{ role: 'user', content: input }]
-            });
-
-            if (response) {
-                showOutput(`
-                    <div class="thinking-block">
-                        <div class="label">📋 질문:</div>
-                        <div class="content">${escapeHtml(input)}</div>
-                    </div>
-                    ${formatResponse(response)}
-                `);
-            }
-        }
-    </script>
+    <script src="js/thinking-example.js"></script>
 </body>
 </html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>마이페이지 | Member</title>
+    <meta name="description" content="Member 서비스 마이페이지에서 가입한 이메일, 이름, 휴대폰 번호, 나이, 주소 정보를 한눈에 확인하고 비밀번호 변경, 회원 정보 수정, 로그아웃, 회원 탈퇴까지 한 곳에서 간편하고 안전하게 관리할 수 있는 회원 전용 페이지입니다.">
+    <!-- 로그인 회원 전용 페이지: 검색엔진 색인 제외 -->
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="http://localhost:10000/mypage.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="마이페이지 | Member">
+    <meta property="og:description" content="Member 서비스 마이페이지에서 가입한 이메일, 이름, 휴대폰 번호, 나이, 주소 정보를 한눈에 확인하고 비밀번호 변경, 회원 정보 수정, 로그아웃, 회원 탈퇴까지 한 곳에서 간편하고 안전하게 관리할 수 있는 회원 전용 페이지입니다.">
+
+    <link rel="stylesheet" href="member.css">
+</head>
+<body>
+<div class="page">
+    <header class="nav">
+        <div class="nav-brand">
+            <span class="mark blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>M</span>
+            MEMBER
+        </div>
+        <nav class="nav-links" aria-label="주요 메뉴">
+            <a href="login.html">로그인</a>
+            <a href="signup.html">회원가입</a>
+            <a href="mypage.html" aria-current="page">마이페이지</a>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="page-head">
+            <div>
+                <span class="card-kicker" id="kicker">My page</span>
+                <h1 id="title">마이페이지</h1>
+            </div>
+            <span class="tag" id="memberTag" hidden></span>
+        </div>
+
+        <p class="message" id="message" role="status">회원 정보를 불러오는 중입니다.</p>
+        <p class="tag notice" id="notice" role="status" hidden></p>
+
+        <!-- 조회 -->
+        <section id="viewSection" aria-label="회원 정보" hidden>
+            <div class="info-grid" id="infoGrid"></div>
+            <div class="actions">
+                <button type="button" class="btn btn-primary blueprint" id="editBtn"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>회원 수정</button>
+                <button type="button" class="btn btn-secondary" id="deleteBtn">회원 탈퇴</button>
+                <button type="button" class="btn btn-ghost" id="logoutBtn">로그아웃</button>
+            </div>
+        </section>
+
+        <!-- 수정 -->
+        <section id="editSection" aria-label="회원 정보 수정" hidden>
+            <form class="edit-form" id="editForm" novalidate>
+                <p style="font-size:13px;opacity:.75;margin:0"><span class="req">*</span> 표시는 필수 입력 항목입니다.</p>
+                <div class="edit-grid">
+                    <div class="field"><label for="f-email">이메일 주소(아이디)</label>
+                        <input class="input" id="f-email" type="email" maxlength="255" disabled></div>
+                    <div class="field"><label for="f-pw">비밀번호</label>
+                        <input class="input" id="f-pw" type="password" maxlength="255" autocomplete="new-password" placeholder="변경 시에만 입력"></div>
+                    <div class="field"><label for="f-name">이름</label>
+                        <input class="input" id="f-name" maxlength="50" placeholder="최대 50자"></div>
+                    <div class="field"><label for="f-age">나이</label>
+                        <input class="input" id="f-age" type="number" min="0" max="150" placeholder="숫자만 입력"></div>
+                    <div class="field"><label for="f-phone">휴대폰 번호 <span class="req">*</span></label>
+                        <input class="input" id="f-phone" type="tel" maxlength="20" placeholder="010-0000-0000"></div>
+                    <div class="field"><label for="f-addr">주소</label>
+                        <input class="input" id="f-addr" maxlength="255" placeholder="주소를 입력해 주세요."></div>
+                </div>
+                <p class="error" id="formError" role="alert" hidden></p>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">취소</button>
+                    <button type="submit" class="btn btn-primary blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>수정 완료</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <nav aria-label="약관"><a href="#">이용약관</a><a href="#">개인정보처리방침</a></nav>
+        <small>Copyright © Member Co., Ltd. All rights reserved.</small>
+    </footer>
+
+    <!-- 탈퇴 확인 -->
+    <div class="dialog-backdrop" id="deleteDialog" hidden>
+        <div class="dialog blueprint" role="dialog" aria-modal="true" aria-labelledby="deleteTitle">
+            <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+            <h2 class="dialog-title" id="deleteTitle">회원 탈퇴</h2>
+            <div class="dialog-body" id="deleteBody"></div>
+            <div class="dialog-actions">
+                <button type="button" class="btn btn-secondary" id="deleteCancel">취소</button>
+                <button type="button" class="btn btn-primary blueprint" id="deleteConfirm"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>탈퇴하기</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="mypage.js"></script>
+</body>
+</html>

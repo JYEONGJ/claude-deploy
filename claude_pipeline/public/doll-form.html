@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>인형 등록 | 인형가게</title>
+  <meta name="description" content="인형가게에 새 인형 상품을 등록하거나 기존 상품의 상품명, 가격, 재고를 수정하거나 삭제하는 관리용 페이지입니다. 이 페이지는 검색엔진에 노출되지 않도록 noindex, nofollow 설정이 되어 있습니다. 저장 전 입력값을 꼭 확인해 주세요.">
+
+  <meta property="og:title" content="인형 등록 | 인형가게">
+  <meta property="og:description" content="인형가게에 새 인형 상품을 등록하거나 기존 상품의 상품명, 가격, 재고를 수정하거나 삭제하는 관리용 페이지입니다. 이 페이지는 검색엔진에 노출되지 않도록 noindex, nofollow 설정이 되어 있습니다. 저장 전 입력값을 꼭 확인해 주세요.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/doll-form.html">
+
+  <link rel="canonical" href="https://example.com/doll-form.html">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/common.js" defer></script>
+  <script src="js/doll-form.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="index.html">인형가게</a>
+    <nav>
+      <a href="index.html">인형 목록</a>
+      <a href="doll-form.html">인형 등록</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 id="form-title">인형 등록</h1>
+    <p id="error" class="alert" role="alert" hidden></p>
+
+    <form id="doll-form" class="doll-form" novalidate>
+      <div class="field">
+        <label for="name">상품명</label>
+        <input id="name" type="text" maxlength="100" required>
+        <p id="name-error" class="field-error" hidden></p>
+      </div>
+
+      <div class="field">
+        <label for="price">가격 (원)</label>
+        <input id="price" type="number" min="0" step="1" required>
+        <p id="price-error" class="field-error" hidden></p>
+      </div>
+
+      <div class="field">
+        <label for="stock">재고</label>
+        <input id="stock" type="number" min="0" step="1" required>
+        <p id="stock-error" class="field-error" hidden></p>
+      </div>
+
+      <div class="form-buttons">
+        <button type="submit" id="save-btn" class="btn btn-primary">저장</button>
+        <a id="cancel-link" class="btn" href="index.html">취소</a>
+        <button type="button" id="delete-btn" class="btn btn-danger" hidden>삭제</button>
+      </div>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 인형가게 테스트 사이트</p>
+  </footer>
+</body>
+</html>

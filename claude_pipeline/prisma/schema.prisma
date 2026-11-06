@@ -1,0 +1,44 @@
+// Prisma schema - 인형 판매 사이트 (MySQL)
+// 참고: ROADMAP_01.md 3.1절 Doll 엔티티
+// tbl_member / tbl_post 는 같은 DB(claude)에 이미 있는 기존 테이블이며, db push 시 삭제되지 않도록 포함해 둠 (수정 금지)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Doll {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(100) // 상품명 (최대 100자)
+  price     Int      // 가격 (원, 0 이상, 앱 검증 로직에서 강제)
+  stock     Int      @default(0) // 재고 수량 (0 이상, 앱 검증 로직에서 강제)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model tbl_member {
+  id       Int        @id @default(autoincrement())
+  email    String     @unique @db.VarChar(255)
+  password String     @db.VarChar(255)
+  name     String?    @db.VarChar(50)
+  age      Int?
+  address  String?    @db.VarChar(255)
+  phone    String     @db.VarChar(20)
+  tbl_post tbl_post[]
+}
+
+model tbl_post {
+  id         Int         @id @default(autoincrement())
+  title      String      @db.VarChar(200)
+  content    String      @db.Text
+  created_at DateTime    @default(now())
+  is_public  Boolean     @default(true)
+  member_id  Int?
+  tbl_member tbl_member? @relation(fields: [member_id], references: [id])
+
+  @@index([member_id])
+}

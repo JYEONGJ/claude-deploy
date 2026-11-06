@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>인형 목록 | 인형가게</title>
+  <meta name="description" content="로그인 없이 인형 상품을 조회하고 구매할 수 있는 인형가게입니다. 등록된 인형의 상품명, 가격, 재고 현황을 한눈에 확인하고, 재고가 없는 품절 상품도 바로 구분해 볼 수 있습니다. 원하는 인형을 골라 상세 페이지에서 구매하세요.">
+
+  <meta property="og:title" content="인형 목록 | 인형가게">
+  <meta property="og:description" content="로그인 없이 인형 상품을 조회하고 구매할 수 있는 인형가게입니다. 등록된 인형의 상품명, 가격, 재고 현황을 한눈에 확인하고, 재고가 없는 품절 상품도 바로 구분해 볼 수 있습니다. 원하는 인형을 골라 상세 페이지에서 구매하세요.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/index.html">
+
+  <link rel="canonical" href="https://example.com/index.html">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/common.js" defer></script>
+  <script src="js/index.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="index.html">인형가게</a>
+    <nav>
+      <a href="index.html">인형 목록</a>
+      <a href="doll-form.html">인형 등록</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>인형 목록</h1>
+    <p id="error" class="alert" role="alert" hidden></p>
+    <ul id="doll-list" class="doll-list">
+      <li class="empty">불러오는 중입니다...</li>
+    </ul>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 인형가게 테스트 사이트</p>
+  </footer>
+</body>
+</html>
